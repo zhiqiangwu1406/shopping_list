@@ -1,4 +1,6 @@
-const inputBox = document.getElementsByClassName("inputContainer")[0]
+const inputBox = document.getElementsByClassName("inputContainer")[0];
+const quantityTag = document.querySelector(".quantity");
+let totalQty = 0;
 const Func = (event) => {
     //create containers for new tasks inputted by user
     const mainContainer = document.createElement("div")
@@ -20,7 +22,9 @@ const Func = (event) => {
     textContainer.classList.add("textContainer")
     const spanTag = document.createElement("span")
     textContainer.append(spanTag)
-    spanTag.append(inputElement)
+    spanTag.append(inputElement);
+    totalQty++;
+    quantityTag.innerHTML = `Total Quantity: ${totalQty}`
     parentContainer.append(textContainer)
     event.target.value = ""   //reset the input 
 
@@ -43,6 +47,8 @@ const Func = (event) => {
     //remove when trash icon is clicked
     trashIcon.addEventListener("click", () => {
         mainContainer.remove();
+        totalQty--;
+        quantityTag.innerHTML = `Total Quantity: ${totalQty}`
     })
 
 
